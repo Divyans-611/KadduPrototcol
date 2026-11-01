@@ -1,0 +1,74 @@
+.floating-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-item {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUpDrift linear infinite;
+  will-change: transform;
+}
+
+@keyframes floatUpDrift {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--item-opacity, 0.3);
+  }
+  90% {
+    opacity: var(--item-opacity, 0.3);
+  }
+  100% {
+    transform: translateY(-110vh) translateX(var(--drift, 0px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  color: #f9a8c9;
+}
+.floating-star {
+  color: #c4b5fd;
+}
+.floating-sparkle {
+  color: #fed7aa;
+}
+.floating-flower {
+  color: #f9a8c9;
+}
+.floating-double-heart {
+  color: #f9a8c9;
+}
+.floating-butterfly {
+  color: #c4b5fd;
+}
+.floating-dot {
+  color: var(--rose-light);
+  font-weight: bold;
+}
+
+/* Star field */
+.star-field {
+  position: absolute;
+  inset: 0;
+}
+
+.bg-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--lavender);
+  border-radius: 50%;
+  animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
