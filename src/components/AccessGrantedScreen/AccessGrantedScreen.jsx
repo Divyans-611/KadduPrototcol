@@ -63,7 +63,7 @@ export default function AccessGrantedScreen({ onComplete }) {
       </motion.h1>
 
       <motion.p className="access-welcome" variants={itemVariants}>
-        Welcome back, Kuchki Puchki! ♡
+        Welcome, Kuchki Puchki ❤️
       </motion.p>
 
       <motion.p className="access-message" variants={itemVariants}>

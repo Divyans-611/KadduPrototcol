@@ -4,6 +4,7 @@ import EntryScreen from './components/EntryScreen/EntryScreen'
 import AccessGrantedScreen from './components/AccessGrantedScreen/AccessGrantedScreen'
 import MorseScreen from './components/MorseScreen/MorseScreen'
 import MissionCompleteScreen from './components/MissionCompleteScreen/MissionCompleteScreen'
+import HeartUniverse from './components/HeartUniverse/HeartUniverse'
 import FloatingElements from './components/FloatingElements/FloatingElements'
 import FloatingPhotos from './components/FloatingPhotos/FloatingPhotos'
 import './App.css'
@@ -13,8 +14,14 @@ function App() {
 
   return (
     <div className="app">
-      <FloatingElements />
-      <FloatingPhotos mode="ambient" />
+      {/* Ambient background photos & floating stars (hidden during 3D universe for true cinematic immersion) */}
+      {currentScreen !== 'universe' && (
+        <>
+          <FloatingElements />
+          <FloatingPhotos mode="ambient" />
+        </>
+      )}
+
       <div className="secret-label" aria-hidden="true">
         A SECRET BIRTHDAY OPERATION
       </div>
@@ -28,7 +35,13 @@ function App() {
         {currentScreen === 'access' && (
           <AccessGrantedScreen
             key="access"
-            onComplete={() => setCurrentScreen('morse')}
+            onComplete={() => setCurrentScreen('universe')}
+          />
+        )}
+        {currentScreen === 'universe' && (
+          <HeartUniverse
+            key="universe"
+            onContinue={() => setCurrentScreen('morse')}
           />
         )}
         {currentScreen === 'morse' && (

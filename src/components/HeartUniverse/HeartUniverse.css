@@ -1,0 +1,191 @@
+.heart-universe-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #1e0514 0%, #0d0108 55%, #050003 100%);
+  z-index: 50;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heart-canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heart-canvas-container canvas {
+  outline: none;
+  touch-action: none;
+}
+
+/* Fallback if WebGL is unavailable */
+.webgl-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallback-heart {
+  font-size: 5rem;
+  animation: pulse 1.5s infinite;
+}
+
+/* UI Overlay */
+.universe-ui-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 1.5rem 3.5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.universe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(253, 164, 175, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #fda4af;
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.universe-text-wrap {
+  text-align: center;
+  max-width: 540px;
+  margin-top: auto;
+  margin-bottom: 2rem;
+  pointer-events: auto;
+  background: radial-gradient(ellipse at center, rgba(13, 1, 8, 0.75) 0%, transparent 80%);
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.universe-quote {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #fff0f3;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 25px rgba(225, 29, 72, 0.4), 0 2px 4px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.6rem;
+}
+
+.universe-tap-hint {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #fda4af;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.universe-action-wrap {
+  pointer-events: auto;
+}
+
+.universe-continue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 38px;
+  border: 1px solid rgba(253, 164, 175, 0.4);
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.85) 0%, rgba(136, 19, 55, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(225, 29, 72, 0.4);
+}
+
+.universe-continue-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(225, 29, 72, 0.6);
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.95) 0%, rgba(159, 18, 57, 0.95) 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.universe-continue-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Click feedback badge */
+.click-feedback-badge {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  pointer-events: none;
+  background: rgba(225, 29, 72, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 100px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 20px rgba(225, 29, 72, 0.5);
+}
+
+/* Mobile & Touch */
+@media (max-width: 480px) {
+  .universe-ui-overlay {
+    padding: 2.8rem 1rem 2.8rem 1rem;
+  }
+
+  .universe-badge {
+    font-size: 0.55rem;
+    letter-spacing: 1.8px;
+    padding: 6px 14px;
+  }
+
+  .universe-text-wrap {
+    padding: 1rem 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .universe-quote {
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
+
+  .universe-tap-hint {
+    font-size: 0.7rem;
+  }
+
+  .universe-continue-btn {
+    padding: 12px 28px;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+  }
+}
