@@ -125,16 +125,51 @@
 }
 
 @media (max-width: 480px) {
+  .access-screen {
+    padding: 3.5rem 1rem 2rem 1rem;
+    justify-content: center;
+  }
+
+  .access-icon {
+    margin-bottom: 1.25rem;
+  }
+
+  .access-badge {
+    margin-bottom: 1rem;
+    padding: 5px 14px;
+    font-size: 0.55rem;
+  }
+
   .access-title {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     letter-spacing: 2px;
+    margin-bottom: 0.6rem;
   }
 
   .access-welcome {
     font-size: 1.15rem;
+    margin-bottom: 0.6rem;
   }
 
   .access-message {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .access-hearts {
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .access-emoji {
+    font-size: 1.3rem;
+  }
+
+  .continue-button {
+    padding: 13px 26px;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 300px;
   }
 }

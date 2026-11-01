@@ -213,21 +213,73 @@
 
 @media (max-width: 480px) {
   .morse-screen {
-    padding: 1.5rem 1rem;
-    gap: 1.5rem;
+    padding: 3.5rem 1rem 2rem 1rem;
+    gap: 1.25rem;
+    justify-content: flex-start;
+  }
+
+  .morse-badge {
+    margin-bottom: 0.75rem;
+    padding: 5px 12px;
+    font-size: 0.55rem;
   }
 
   .morse-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
+    letter-spacing: 1.5px;
+  }
+
+  .morse-subtitle {
+    font-size: 0.88rem;
   }
 
   .morse-card {
-    padding: 1.5rem;
+    padding: 1.25rem 1rem;
     border-radius: var(--radius-md);
   }
 
+  .morse-card-header {
+    font-size: 0.58rem;
+    margin-bottom: 1rem;
+  }
+
+  .morse-code-display {
+    padding: 1rem 0.5rem;
+  }
+
   .morse-code-text {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    line-height: 1.8;
+  }
+
+  .morse-hint {
+    padding: 10px 12px;
+  }
+
+  .morse-hint p {
+    font-size: 0.78rem;
+  }
+
+  .reveal-button {
+    padding: 12px 22px;
+    font-size: 0.78rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .encouraging-message {
+    padding: 1.2rem 1rem;
+    width: 100%;
+  }
+
+  .encouraging-message p {
+    font-size: 0.85rem;
+  }
+
+  .final-proceed-button {
+    width: 100%;
+    padding: 11px 18px;
+    font-size: 0.75rem;
   }
 }

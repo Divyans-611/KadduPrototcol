@@ -121,16 +121,52 @@
 }
 
 @media (max-width: 480px) {
+  .mission-screen {
+    padding: 3.5rem 1rem 2rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .mission-gift {
+    margin-bottom: 1.25rem;
+  }
+
+  .mission-badge {
+    margin-bottom: 1rem;
+    padding: 5px 14px;
+    font-size: 0.55rem;
+  }
+
   .mission-title {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     letter-spacing: 2px;
+    margin-bottom: 0.6rem;
   }
 
   .mission-welcome {
     font-size: 1.1rem;
+    margin-bottom: 1.25rem;
   }
 
   .mission-card {
-    padding: 1.25rem 1.5rem;
+    padding: 1.2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mission-instructions {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .mission-hearts {
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .mission-emoji {
+    font-size: 1.4rem;
+  }
+
+  .mission-footer {
+    font-size: 0.95rem;
   }
 }

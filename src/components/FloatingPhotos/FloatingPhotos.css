@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 2; /* above subtle stars, below cards */
+  z-index: 2; /* behind interactive modals, ahead of background */
   overflow: hidden;
 }
 
@@ -12,15 +12,16 @@
   pointer-events: auto;
   cursor: pointer;
   background: #ffffff;
-  padding: 8px 8px 12px 8px;
+  padding: 7px 7px 11px 7px;
   border-radius: 8px;
   box-shadow: 0 10px 25px rgba(159, 18, 57, 0.15), 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-  width: 140px;
+  width: 125px;
+  user-select: none;
 }
 
 .ambient-photo-card:hover {
-  box-shadow: 0 20px 35px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 20px 35px rgba(225, 29, 72, 0.28);
 }
 
 .photo-pin {
@@ -28,14 +29,14 @@
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1rem;
+  font-size: 0.95rem;
   z-index: 5;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .photo-img-wrap {
   width: 100%;
-  height: 140px;
+  height: 125px;
   border-radius: 6px;
   overflow: hidden;
   background: #ffe4e6;
@@ -50,11 +51,11 @@
 
 .photo-caption {
   font-family: var(--font-display);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-style: italic;
   color: var(--text-secondary);
   text-align: center;
-  margin-top: 6px;
+  margin-top: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,21 +63,21 @@
 
 /* Custom Frame Shapes */
 .ambient-photo-card.polaroid {
-  border-bottom: 22px solid #ffffff;
+  border-bottom: 20px solid #ffffff;
   border-radius: 4px;
 }
 
 .ambient-photo-card.romantic {
   border: 3px solid #fda4af;
-  border-radius: 18px;
+  border-radius: 16px;
   background: #fff5f7;
 }
 .ambient-photo-card.romantic .photo-img-wrap {
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 .ambient-photo-card.soft-card {
-  border-radius: 16px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #fff, #fce7f3);
 }
 
@@ -86,41 +87,22 @@
   background: #fffaf0;
 }
 
-/* Desktop placements */
-.card-1 {
-  top: 8%;
-  left: 3.5%;
-  transform: rotate(-6deg);
-}
+/* 8 Ambient Locations Across Screen Perimeter */
+.card-pos-1 { top: 6%; left: 3%; transform: rotate(-5deg); }
+.card-pos-2 { top: 32%; left: 2%; transform: rotate(4deg); }
+.card-pos-3 { bottom: 8%; left: 3.5%; transform: rotate(-4deg); }
 
-.card-2 {
-  bottom: 12%;
-  left: 4%;
-  transform: rotate(5deg);
-}
+.card-pos-4 { top: 6%; right: 3%; transform: rotate(6deg); }
+.card-pos-5 { top: 32%; right: 2%; transform: rotate(-3deg); }
+.card-pos-6 { bottom: 8%; right: 3.5%; transform: rotate(5deg); }
 
-.card-3 {
-  top: 10%;
-  right: 3.5%;
-  transform: rotate(6deg);
-}
-
-.card-4 {
-  bottom: 14%;
-  right: 4%;
-  transform: rotate(-5deg);
-}
-
-.card-5 {
-  top: 48%;
-  left: 1.5%;
-  transform: rotate(-3deg);
-}
+.card-pos-7 { top: 58%; left: 4%; transform: rotate(-6deg); }
+.card-pos-8 { top: 58%; right: 4%; transform: rotate(4deg); }
 
 /* Showcase Carousel for celebratory screens */
 .floating-photos-showcase {
   width: 100%;
-  max-width: 680px;
+  max-width: 720px;
   margin: 1.5rem auto;
   position: relative;
   z-index: 10;
@@ -131,11 +113,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 0.68rem;
-  letter-spacing: 2.5px;
+  font-size: 0.66rem;
+  letter-spacing: 2px;
   color: var(--wine);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
 .showcase-sparkle {
@@ -143,23 +126,37 @@
 }
 
 .showcase-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 14px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 8px;
+  padding: 8px 12px;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .showcase-card {
   position: relative;
   background: #ffffff;
-  padding: 8px 8px 12px 8px;
+  padding: 7px 7px 11px 7px;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(159, 18, 57, 0.12);
-  width: 110px;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.showcase-card.polaroid {
+  border-bottom: 18px solid #ffffff;
+  border-radius: 4px;
+}
+.showcase-card.romantic {
+  border: 2px solid #fda4af;
+  border-radius: 12px;
+}
+.showcase-card.stamp {
+  border: 2px dashed #f472b6;
 }
 
 .showcase-card .photo-pin {
@@ -169,7 +166,7 @@
 
 .showcase-img-wrap {
   width: 100%;
-  height: 110px;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   overflow: hidden;
   background: #fed7aa;
@@ -179,6 +176,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .showcase-caption {
@@ -190,74 +188,126 @@
   text-align: center;
   margin-top: 6px;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Mobile Responsiveness */
+/* Tap to Enlarge Modal */
+.photo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(76, 29, 78, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.photo-modal-card {
+  position: relative;
+  background: #ffffff;
+  padding: 12px 12px 18px 12px;
+  border-radius: 16px;
+  max-width: 340px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.photo-modal-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--wine);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 20;
+}
+
+.modal-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-caption {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--wine-dark);
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Responsive Media Queries (Mobile & WhatsApp Webview) */
 @media (max-width: 900px) {
   .ambient-photo-card {
-    width: 90px;
-    padding: 5px 5px 8px 5px;
+    width: 85px;
+    padding: 4px 4px 7px 4px;
   }
   .photo-img-wrap {
-    height: 90px;
+    height: 85px;
   }
   .photo-caption {
     font-size: 0.55rem;
   }
-  .card-1 {
-    top: 4%;
-    left: 2%;
-  }
-  .card-2 {
-    bottom: 3%;
-    left: 2%;
-  }
-  .card-3 {
-    top: 4%;
-    right: 2%;
-  }
-  .card-4 {
-    bottom: 3%;
-    right: 2%;
-  }
-  .card-5 {
-    display: none; /* hide extra card on smaller screens to avoid clutter */
+  /* Show only 4 corners on tablets */
+  .card-pos-2, .card-pos-5, .card-pos-7, .card-pos-8 {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  /* On very small mobile screens, keep ambient cards subtle on sides or in showcase */
-  .ambient-photo-card {
-    width: 76px;
+  .floating-photos-ambient {
     opacity: 0.85;
   }
+  .ambient-photo-card {
+    width: 68px;
+    padding: 3px 3px 6px 3px;
+  }
   .photo-img-wrap {
-    height: 76px;
+    height: 68px;
   }
   .photo-caption {
-    display: none;
+    display: none; /* keep clean on tiny screens */
   }
-  .card-1 {
-    top: 2%;
-    left: 2%;
-  }
-  .card-2 {
-    bottom: 2%;
-    left: 2%;
-  }
-  .card-3 {
-    top: 2%;
-    right: 2%;
-  }
-  .card-4 {
-    bottom: 2%;
-    right: 2%;
-  }
+  .card-pos-1 { top: 2%; left: 2%; }
+  .card-pos-3 { bottom: 2%; left: 2%; }
+  .card-pos-4 { top: 2%; right: 2%; }
+  .card-pos-6 { bottom: 2%; right: 2%; }
 
-  .showcase-card {
-    width: 92px;
+  .showcase-track {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 4px;
   }
-  .showcase-img-wrap {
-    height: 92px;
+  .showcase-card {
+    padding: 4px 4px 6px 4px;
+  }
+  .showcase-caption {
+    font-size: 0.52rem;
+  }
+  .showcase-header {
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
   }
 }
