@@ -4,6 +4,7 @@ import { Float } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
 import { createHeartGeometry } from './heartGeometry'
+import { cuteSound } from './cuteSounds'
 
 /**
  * Single 3D glossy Heart with realistic physical material,
@@ -24,6 +25,7 @@ export function Floating3DHeart({
   const meshRef = useRef()
   const [hovered, setHovered] = useState(false)
   const initialScale = useRef(scale)
+  const isSpinning = useRef(false)
 
   const geometry = useMemo(() => {
     return createHeartGeometry(isHero ? 0.65 : 0.45, isHero ? 0.28 : 0.2)
@@ -33,22 +35,35 @@ export function Floating3DHeart({
     e.stopPropagation()
     if (!meshRef.current) return
 
-    // GSAP heartbeat pulse & spin animation on click
+    // Play cute sound!
+    if (isHero) {
+      cuteSound.playHeartbeat()
+      setTimeout(() => cuteSound.playHeartChime(), 140)
+    } else {
+      cuteSound.playHeartChime()
+    }
+
+    // GSAP 3D full rotational pirouette & bouncy scale pop on click
+    isSpinning.current = true
     gsap.to(meshRef.current.scale, {
-      x: initialScale.current * 1.45,
-      y: initialScale.current * 1.45,
-      z: initialScale.current * 1.45,
-      duration: 0.2,
+      x: initialScale.current * 1.55,
+      y: initialScale.current * 1.55,
+      z: initialScale.current * 1.55,
+      duration: 0.22,
       ease: 'back.out(3)',
       yoyo: true,
       repeat: 1
     })
 
     gsap.to(meshRef.current.rotation, {
-      y: meshRef.current.rotation.y + Math.PI * 2,
-      x: meshRef.current.rotation.x + 0.3,
-      duration: 0.85,
-      ease: 'power2.out'
+      y: meshRef.current.rotation.y + Math.PI * 4, // 720-degree 3D rotation
+      x: meshRef.current.rotation.x + Math.PI * 2,
+      z: meshRef.current.rotation.z + 0.5,
+      duration: 1.2,
+      ease: 'power3.out',
+      onComplete: () => {
+        isSpinning.current = false
+      }
     })
 
     if (onClick) onClick()
@@ -57,11 +72,14 @@ export function Floating3DHeart({
   useFrame((state, delta) => {
     if (!meshRef.current) return
 
-    // Natural rhythmic heartbeat rotation
+    // If currently performing click spin, let GSAP drive the rotation
+    if (isSpinning.current) return
+
+    // Natural rhythmic heartbeat continuous 3D rotation
     const time = state.clock.getElapsedTime() * speed
-    meshRef.current.rotation.y = rotationOffset[1] + Math.sin(time * 0.8) * 0.22
-    meshRef.current.rotation.x = rotationOffset[0] + Math.cos(time * 0.6) * 0.15
-    meshRef.current.rotation.z = rotationOffset[2] + Math.sin(time * 0.4) * 0.1
+    meshRef.current.rotation.y = rotationOffset[1] + (time * 0.45)
+    meshRef.current.rotation.x = rotationOffset[0] + Math.cos(time * 0.7) * 0.2
+    meshRef.current.rotation.z = rotationOffset[2] + Math.sin(time * 0.5) * 0.15
 
     // If hero heart, add a soft lifelike lub-dub heartbeat pulse
     if (isHero) {
@@ -87,6 +105,7 @@ export function Floating3DHeart({
         onPointerOver={(e) => {
           e.stopPropagation()
           setHovered(true)
+          cuteSound.playSoftPop()
           document.body.style.cursor = 'pointer'
         }}
         onPointerOut={() => {

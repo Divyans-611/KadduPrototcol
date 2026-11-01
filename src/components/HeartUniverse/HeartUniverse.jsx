@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Sparkles } from 'lucide-react'
 import { Floating3DHeart } from './Floating3DHeart'
@@ -139,6 +140,17 @@ export default function HeartUniverse({ onContinue }) {
 
               {/* Parallax Controller */}
               <CameraParallax mouseRef={mouseRef} />
+
+              {/* Free 3D Drag & Touch Orbit Rotation */}
+              <OrbitControls
+                enableZoom={false}
+                enablePan={false}
+                rotateSpeed={0.8}
+                dampingFactor={0.06}
+                enableDamping={true}
+                maxPolarAngle={Math.PI / 1.7}
+                minPolarAngle={Math.PI / 2.5}
+              />
             </Suspense>
           </Canvas>
         </div>
@@ -186,7 +198,7 @@ export default function HeartUniverse({ onContinue }) {
             "Somewhere in this universe, there's a little world that exists only for you."
           </p>
           <p className="universe-tap-hint">
-            (Tap the hearts to feel them beat)
+            (Tap hearts for magical sounds & drag in 3D to rotate)
           </p>
         </motion.div>
 
