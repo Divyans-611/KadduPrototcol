@@ -79,7 +79,7 @@ export default function MissionCompleteScreen() {
       </motion.div>
 
       <motion.p className="mission-footer" variants={itemVariants}>
-        Happy Birthday, Kaddu. \u2661
+        Happy Birthday, Kaddu. ♡ — from Divzzy
       </motion.p>
     </motion.div>
   )
