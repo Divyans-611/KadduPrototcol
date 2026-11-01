@@ -5,6 +5,7 @@ import AccessGrantedScreen from './components/AccessGrantedScreen/AccessGrantedS
 import MorseScreen from './components/MorseScreen/MorseScreen'
 import MissionCompleteScreen from './components/MissionCompleteScreen/MissionCompleteScreen'
 import FloatingElements from './components/FloatingElements/FloatingElements'
+import FloatingPhotos from './components/FloatingPhotos/FloatingPhotos'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="app">
       <FloatingElements />
+      <FloatingPhotos mode="ambient" />
       <div className="secret-label" aria-hidden="true">
         A SECRET BIRTHDAY OPERATION
       </div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Gift, Heart, Star } from 'lucide-react'
 import Confetti from '../Confetti/Confetti'
+import FloatingPhotos from '../FloatingPhotos/FloatingPhotos'
 import './MissionCompleteScreen.css'
 
 const containerVariants = {
@@ -57,6 +58,10 @@ export default function MissionCompleteScreen() {
           Your final destination is waiting. Open the birthday PDF and enter
           your decoded password to reveal what's inside.
         </p>
+      </motion.div>
+
+      <motion.div variants={itemVariants}>
+        <FloatingPhotos mode="showcase" />
       </motion.div>
 
       <motion.div

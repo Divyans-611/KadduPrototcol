@@ -1,0 +1,263 @@
+/* Floating Ambient Photos */
+.floating-photos-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2; /* above subtle stars, below cards */
+  overflow: hidden;
+}
+
+.ambient-photo-card {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: #ffffff;
+  padding: 8px 8px 12px 8px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(159, 18, 57, 0.15), 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  width: 140px;
+}
+
+.ambient-photo-card:hover {
+  box-shadow: 0 20px 35px rgba(225, 29, 72, 0.25);
+}
+
+.photo-pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.photo-img-wrap {
+  width: 100%;
+  height: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffe4e6;
+}
+
+.photo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-caption {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Custom Frame Shapes */
+.ambient-photo-card.polaroid {
+  border-bottom: 22px solid #ffffff;
+  border-radius: 4px;
+}
+
+.ambient-photo-card.romantic {
+  border: 3px solid #fda4af;
+  border-radius: 18px;
+  background: #fff5f7;
+}
+.ambient-photo-card.romantic .photo-img-wrap {
+  border-radius: 14px;
+}
+
+.ambient-photo-card.soft-card {
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff, #fce7f3);
+}
+
+.ambient-photo-card.stamp {
+  border: 2px dashed #f472b6;
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+/* Desktop placements */
+.card-1 {
+  top: 8%;
+  left: 3.5%;
+  transform: rotate(-6deg);
+}
+
+.card-2 {
+  bottom: 12%;
+  left: 4%;
+  transform: rotate(5deg);
+}
+
+.card-3 {
+  top: 10%;
+  right: 3.5%;
+  transform: rotate(6deg);
+}
+
+.card-4 {
+  bottom: 14%;
+  right: 4%;
+  transform: rotate(-5deg);
+}
+
+.card-5 {
+  top: 48%;
+  left: 1.5%;
+  transform: rotate(-3deg);
+}
+
+/* Showcase Carousel for celebratory screens */
+.floating-photos-showcase {
+  width: 100%;
+  max-width: 680px;
+  margin: 1.5rem auto;
+  position: relative;
+  z-index: 10;
+}
+
+.showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  color: var(--wine);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.showcase-sparkle {
+  font-size: 0.85rem;
+}
+
+.showcase-track {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+
+.showcase-card {
+  position: relative;
+  background: #ffffff;
+  padding: 8px 8px 12px 8px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(159, 18, 57, 0.12);
+  width: 110px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.showcase-card .photo-pin {
+  font-size: 0.8rem;
+  top: -8px;
+}
+
+.showcase-img-wrap {
+  width: 100%;
+  height: 110px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fed7aa;
+}
+
+.showcase-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-caption {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 6px;
+  line-height: 1.2;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .ambient-photo-card {
+    width: 90px;
+    padding: 5px 5px 8px 5px;
+  }
+  .photo-img-wrap {
+    height: 90px;
+  }
+  .photo-caption {
+    font-size: 0.55rem;
+  }
+  .card-1 {
+    top: 4%;
+    left: 2%;
+  }
+  .card-2 {
+    bottom: 3%;
+    left: 2%;
+  }
+  .card-3 {
+    top: 4%;
+    right: 2%;
+  }
+  .card-4 {
+    bottom: 3%;
+    right: 2%;
+  }
+  .card-5 {
+    display: none; /* hide extra card on smaller screens to avoid clutter */
+  }
+}
+
+@media (max-width: 480px) {
+  /* On very small mobile screens, keep ambient cards subtle on sides or in showcase */
+  .ambient-photo-card {
+    width: 76px;
+    opacity: 0.85;
+  }
+  .photo-img-wrap {
+    height: 76px;
+  }
+  .photo-caption {
+    display: none;
+  }
+  .card-1 {
+    top: 2%;
+    left: 2%;
+  }
+  .card-2 {
+    bottom: 2%;
+    left: 2%;
+  }
+  .card-3 {
+    top: 2%;
+    right: 2%;
+  }
+  .card-4 {
+    bottom: 2%;
+    right: 2%;
+  }
+
+  .showcase-card {
+    width: 92px;
+  }
+  .showcase-img-wrap {
+    height: 92px;
+  }
+}
